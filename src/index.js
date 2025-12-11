@@ -3,6 +3,7 @@ import connectDB from "./config/db.js";
 import Handlers from "./handlers/index.js";
 import errorMiddleware from "./middlewares/error.js";
 import Auth_Router from "./handlers/auth.js";
+import { authMiddleware } from "./middlewares/auth.js";
 
 const APP_SERVER = express();
 
@@ -16,6 +17,7 @@ APP_SERVER.get("/", (req, res) => {
 });
 
 APP_SERVER.use(express.json());
+APP_SERVER.use(authMiddleware);
 APP_SERVER.use("/", Handlers);
 APP_SERVER.use(errorMiddleware);
 APP_SERVER.use(Auth_Router);
