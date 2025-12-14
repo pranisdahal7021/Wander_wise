@@ -22,7 +22,6 @@ APP_SERVER.use("/", Handlers);
 APP_SERVER.use(errorMiddleware);
 APP_SERVER.use(Auth_Router);
 
-
 APP_SERVER.listen(process.env.port, () => {
   console.log(`server is running on port ${process.env.PORT}`);
 });

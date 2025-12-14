@@ -17,7 +17,7 @@ export const createTripValidator = [
         .trim()
         .notEmpty()
         .withMessage("End date is required")
-        ,isDate()
+        .isDate()
         .withMessage("End date must be a valid date")
         .custom((value, {req}) => {
             if (value < req.body.startDate) {
@@ -47,8 +47,9 @@ export const createTripValidator = [
     body("budget.expenses")
     .optional()
     .isArray()
-    .withMessage("Expenses must be an array")
-    .body("budget.expenses.*.name")
+    .withMessage("Expenses must be an array"),
+    
+    body("budget.expenses.*.name")
     .optional()
     .trim()
     .notEmpty()

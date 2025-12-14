@@ -1,6 +1,6 @@
 @baseUrl = http://localhost:3000
 @userId = 691af6ce679594af902955ed
-
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTM2YjVhNjViYjMwZmE3NGRjNjRhYzkiLCJpYXQiOjE3NjU3MTA0NTUsImV4cCI6MTc2NTc5Njg1NX0.wwbW9IFtFUgoEBoloqb2xJy29DWkF4qCWfKeuqm_Zp4
 ### Create a new user
 POST {{baseUrl}}/users
 Content-Type: application/json
@@ -46,6 +46,21 @@ POST {{baseUrl}}/auth/login
 Content-Type: application/json
 
 {
-  "email": "john.doe7@example.com",
-  "password": "password"
+  "email": "john.doe6@example.com",
+  "password":"password"
+}
+
+### create a new trip
+POST {{baseUrl}}/trip
+Content-Type: application/json
+Authorization: Bearer {{ token }}
+
+{
+  "title": "trip to the moon",
+  "startDate": "2024-12-01",
+  "endDate": "2024-12-10",
+  "budget":{
+    "total": 5000
+  },
+  "destination": ["Moon", "Mars", "Uranus"]
 }
