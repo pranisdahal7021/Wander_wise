@@ -1,10 +1,10 @@
 import { Router } from "express";
 import {
   createBaggage,
-  findAllBaggage,
-  findBaggageById,
+  getAllBaggage,
+  getBaggageById,
   updateBaggageById,
-  deleteBaggageById,
+  deleteBaggage,
 } from "../services/baggage.js";
 
 const BAGGAGE_ROUTER = Router();
@@ -15,12 +15,12 @@ BAGGAGE_ROUTER.post("/", async (req, res) => {
 });
 
 BAGGAGE_ROUTER.get("/", async (req, res) => {
-  const baggages = await findAllBaggage();
+  const baggages = await getAllBaggage();
   res.status(200).json(baggages);
 });
 
 BAGGAGE_ROUTER.get("/:id", async (req, res) => {
-  const baggage = await findBaggageById(req.params.id);
+  const baggage = await getBaggageById(req.params.id);
   res.status(200).json(baggage);
 });
 
@@ -30,8 +30,8 @@ BAGGAGE_ROUTER.patch("/:id", async (req, res) => {
 });
 
 BAGGAGE_ROUTER.delete("/:id", async (req, res) => {
-  const baggage = await deleteBaggageById(req.params.id);
+  const baggage = await deleteBaggage(req.params.id);
   res.status(200).json(baggage);
 });
 
-export default BAGGAGE_ROUTER;
+export default BAGGAGE_ROUTER;

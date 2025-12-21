@@ -35,7 +35,7 @@ USER_ROUTER.post(
 
 USER_ROUTER.get("/", async (req, res, next) => {
   try {
-    const users = await findAllUsers();
+    const users = await findAllUsers(req.query);
     res.status(200).json(users);
   } catch (error) {
     next(error);

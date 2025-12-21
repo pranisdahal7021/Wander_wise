@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { createTrip } from "../services/trip.js";
-import { createTripValidator } from "../validators/trip.js";
+import { createTripValidator } from "../Validators/trip.js";
 import useValidators from "../middlewares/useValidators.js";
 
 const TRIP_ROUTER = Router();

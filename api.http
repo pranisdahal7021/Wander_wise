@@ -1,6 +1,8 @@
 @baseUrl = http://localhost:3000
 @userId = 691af6ce679594af902955ed
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTM2YjVhNjViYjMwZmE3NGRjNjRhYzkiLCJpYXQiOjE3NjU3MTA0NTUsImV4cCI6MTc2NTc5Njg1NX0.wwbW9IFtFUgoEBoloqb2xJy29DWkF4qCWfKeuqm_Zp4
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTM2YjVhNjViYjMwZmE3NGRjNjRhYzkiLCJpYXQiOjE3NjYzMTE1MTgsImV4cCI6MTc2NjMzNjcxOH0.fR7LZnDeBaJrD1fERVDK0gbEqdI5EZ3BFvQcUaVSsS8
+
+
 ### Create a new user
 POST {{baseUrl}}/users
 Content-Type: application/json
@@ -13,9 +15,11 @@ Content-Type: application/json
 
 ### Get all users
 GET {{baseUrl}}/users
+Authorization: Bearer {{ token }}
 
 ### Get a user by id
 GET {{baseUrl}}/users/{{userId}}
+Authorization: Bearer {{ token }}
 
 ### Update a user by id
 PATCH {{baseUrl}}/users/{{userId}}
@@ -29,6 +33,7 @@ Content-Type: application/json
 
 ### Delete a user by id
 DELETE {{baseUrl}}/users/{{userId}}
+Authorization: Bearer {{ token }}
 
 
 ### Register a new user
