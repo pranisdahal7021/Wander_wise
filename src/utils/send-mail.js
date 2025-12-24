@@ -1,6 +1,25 @@
 import nodemailer from "nodemailer";
+import path from "path";
+import fs from "fs";
 
-const sendMail = async (to, subject, text) => {
+const sendMail = async (to, subject, data) => {
+  const templatePath = path.join(
+    process.cwd(),
+    "src",
+    "templates",
+    "accept-invite.html"
+  );
+
+  let html = fs.readFileSync(templatePath, "utf8");
+
+  html = html
+    .replace("{{ link }}", data.link)
+    .replace("{{ title }}", data.title)
+    .replace("{{ startDate }}", data.startDate)
+    .replace("{{ endDate }}", data.endDate)
+    .replace("{{ userName }}", data.name);
+  console.log(data);
+
   const transporter = nodemailer.createTransport({
     service: process.env.SMTP_SERVICE,
     auth: {
@@ -8,28 +27,13 @@ const sendMail = async (to, subject, text) => {
       pass: process.env.SMTP_PASSWORD,
     },
   });
+
   await transporter.sendMail({
     from: process.env.SMTP_USER,
     to,
     subject,
-    text,
+    html,
   });
 };
-
-for (let index = 0; index < 50; index++) {
-  setTimeout(() => {
-    sendMail(
-      "@gmail.com",
-      "Test Mail",
-      "This is a test mail from Kiran_doe."
-    )
-      .then(() => {
-        console.log(`Mail sent ${index + 1}`);
-      })
-      .catch((err) => {
-        console.log(`Error sending mail ${index + 1}: `, err);
-      });
-  }, 2000);
-}
 
 export default sendMail;

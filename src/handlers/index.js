@@ -8,8 +8,7 @@ const Handlers = Router();
 
 Handlers.use("/users", USER_ROUTER);
 Handlers.use("/auth", AUTH_Router);
-Handlers.use("/trip", TRIP_ROUTER);
-Handlers.use("/baggage", BAGGAGE_ROUTER);
-
+Handlers.use("/trips", TRIP_ROUTER);
+Handlers.use("/:id/baggage", BAGGAGE_ROUTER);
 
 export default Handlers;

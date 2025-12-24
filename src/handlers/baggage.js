@@ -7,7 +7,7 @@ import {
   deleteBaggage,
 } from "../services/baggage.js";
 
-const BAGGAGE_ROUTER = Router();
+const BAGGAGE_ROUTER = Router({ mergeParams: true });
 
 BAGGAGE_ROUTER.post("/", async (req, res) => {
   const baggage = await createBaggage(req.body);

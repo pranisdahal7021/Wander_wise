@@ -1,6 +1,6 @@
 @baseUrl = http://localhost:3000
 @userId = 691af6ce679594af902955ed
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTM2YjVhNjViYjMwZmE3NGRjNjRhYzkiLCJpYXQiOjE3NjYzMTE1MTgsImV4cCI6MTc2NjMzNjcxOH0.fR7LZnDeBaJrD1fERVDK0gbEqdI5EZ3BFvQcUaVSsS8
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTM2YjVhNjViYjMwZmE3NGRjNjRhYzkiLCJpYXQiOjE3NjY1NzE4OTEsImV4cCI6MTc2NjU5NzA5MX0.NO3qUJGZZkbkrIbWOAbGX1Rp02VoO1nYWShKcLEI3rQ
 
 
 ### Create a new user
@@ -68,4 +68,25 @@ Authorization: Bearer {{ token }}
     "total": 5000
   },
   "destination": ["Moon", "Mars", "Uranus"]
+}
+
+### Get all trips
+GET {{baseUrl}}/trips
+Authorization: Bearer {{token}}
+
+### Get a trip by id
+GET {{baseUrl}}/trips/6936b5a65bb30fa74dc64ac9
+Authorization: Bearer {{token}}
+
+### Invite collaborators to a trip
+POST {{baseUrl}}/trips/693e9b8457a74bdcafa7d6cf/invite
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "collaboratorEmails": [
+    "dbhattarai387@gmail.com",
+    "pranish.dahal980@gmail.com"
+    
+  ]
 }

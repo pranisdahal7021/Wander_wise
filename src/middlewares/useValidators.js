@@ -1,5 +1,5 @@
 import { validationResult} from "express-validator";
-import  ValidationError  from "../errors/validation-error.js";
+import  validationError  from "../errors/validation-error.js";
 
 const useValidators =
     (validators = []) =>
@@ -13,7 +13,7 @@ const useValidators =
                 field: path,
                 message: msg,
             }));
-            return next(new ValidationError(formatted));
+            return next(new validationError(formatted));
         }
 
         return next();
